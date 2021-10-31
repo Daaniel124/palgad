@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "palgad", "palgad\palgad.pyproj", "{A93BAC75-1EBB-4FE8-A81D-243B153DE89A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A93BAC75-1EBB-4FE8-A81D-243B153DE89A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A93BAC75-1EBB-4FE8-A81D-243B153DE89A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {272C4F03-F0BA-44E6-B217-0609A5D94390}
+	EndGlobalSection
+EndGlobal
