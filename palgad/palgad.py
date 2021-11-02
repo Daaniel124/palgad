@@ -3,7 +3,6 @@ inimesed = ["A", "B",'A','D','E','F','G','H']
 palgad = [2000,150,2000,300,450,3000,2000,2000]
 #inimesed = ['A', 'B', 'C']
 #palgad = [3000, 2000, 1000]
-#N = 4
 def sisesta_andmed(i,p):
     N = int(input('Введите количество людей: '))
     for n in range(N):
@@ -142,7 +141,8 @@ def kesk1(palk):
     print(f'Средняя зарплата равна {summa}')
 
 def kesk(i, p):
-    summa = 0
+    summa=0
+    t=False
     for palk in p:
         summa+=palk
     summa/=len(p)
@@ -151,8 +151,9 @@ def kesk(i, p):
         if palk==summa:
             n=p.index(palk)
             print(f"Получает: {i[n]}")
-        else:
-            print("Люди, получающие такую зарплату, отсутсвуют.")
+            t=True
+
+    if t!=True:   print("Люди, получающие такую зарплату, отсутсвуют.")
 
 def erinev_palk(i, p):
     number = int(input('Введите зарплату: '))
@@ -216,13 +217,19 @@ def tulumaks(i, p):
 
 def kustutamine_kesk(i, p):
     summa = 0
-    for palk in p:
+    for palk in palgad:
         summa+=palk
-    summa/=len(p)
-    for i in palk:
-        if palk < summa:
-            p.remove(palk)
-    print(p)
+    summa/=len(palgad)
+    n = len(palgad)
+    for i in range(n):
+        for palk in palgad:
+            if palk < summa:
+                g = int(palgad.index(palk))
+                palgad.remove(palk)
+                inimesed.pop(g)
+    N=len(inimesed)
+    for n in range(N):
+        print(f"{inimesed[n]} - {palgad[n]}")
 
 while 1:
     valik=input("\na - Ввод данных\ne - Показать данные \nk - Удаление\nkk - Удаление из списка людей, который получают меньше средней\ns1 - Сортировка по числам\ns2 - Сортировка по буквам\nv - Проверка одинаковых зарплат\nma - Максимальна зарплата\nmi - Минимальная зарплата\nnimi - Поиск зарплаты по имени\nkesk - Средняя зарплата\nh - Список людей, которые полчают >/< введеной зарплаты\ntop - Топ 3 богатых и бедных\ntul - Зарплата с вычетом налогов\n")
@@ -233,17 +240,7 @@ while 1:
     elif valik.lower() == "k":
         inimesed,palgad=kustutamine(inimesed,palgad)
     elif valik.lower() == 'kk':
-        summa = 0
-        for palk in palgad:
-            summa+=palk
-        summa/=len(palgad)
-        n = len(palgad)
-        for i in range(n):
-            for palk in palgad:
-                if palk < summa:
-                    palgad.remove(palk)
-        print(palgad)
-        #kustutamine_kesk(inimesed, palgad)
+        kustutamine_kesk(inimesed, palgad)
     elif valik.lower() == "s1":
         sorteerimine(inimesed, palgad, int(input("1 - Сортировка по убыванию.\n2 - Сортировка по возростанию.\n")))
     elif valik.lower() == 's2':
@@ -257,18 +254,7 @@ while 1:
     elif valik.lower() == 'nimi':
         nimi(inimesed, palgad)
     elif valik.lower() == 'kesk':
-        summa = 0
-        for palk in palgad:
-            summa+=palk
-        summa/=len(palgad)
-        print(f"Средняя зарплата: {summa}")
-        for palk in palgad:
-            if palk==summa:
-                n=palgad.index(palk)
-                print(f"Получает: {inimesed[n]}")
-            else:
-                print("Люди, получающие такую зарплату, отсутсвуют.")
-        #kesk(inimesed, palgad)
+        kesk(inimesed, palgad)
     elif valik.lower() == 'h':
         erinev_palk(inimesed, palgad)
     elif valik.lower() == 'top':
