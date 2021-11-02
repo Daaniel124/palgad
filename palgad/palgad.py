@@ -1,5 +1,5 @@
 from random import *
-inimesed = ["A", "B",'C','D','E','F','G','H']
+inimesed = ["A", "B",'A','D','E','F','G','H']
 palgad = [2000,150,2000,300,450,3000,2000,2000]
 #N = 4
 def sisesta_andmed(i,p):
@@ -101,7 +101,8 @@ def nimi(i, p):
             otsi_nimi.append(inimesed[j])
             otsi_palk.append(palk_keda)
         else:pass
-    print(f'{otsi_nimi} - {otsi_palk}')
+    for i in range(len(otsi_nimi)):
+        print(f'{otsi_nimi[i]} - {otsi_palk[i]}')
 
 def kesk(palk):
     summa = 0
@@ -111,8 +112,20 @@ def kesk(palk):
     summa = summa/n
     print(f'Средняя зарплата равна {summa}')
 
-#def erinev_palk(i, p):
-
+def erinev_palk(i, p):
+    number = int(input('Введите зарплату: '))
+    tin = int(input('Больше или меньше зарплаты? 1/2: '))
+    for i in palgad:
+        if tin == 1:
+            if i > number:
+                ind = palgad.index(i)
+                nimi = inimesed[ind]
+                print(f'{nimi} - {i}')
+        else:
+            if i < number:
+                ind = palgad.index(i)
+                nimi = inimesed[ind]
+                print(f'{nimi} - {i}')
 
 while 1:
     valik=input("\na - Ввод данных\ne - Показать данные \nk - Удаление\ns - Сортировка\nv - Проверка одинаковых зарплат\nma - Максимальна зарплата\nmi - Минимальная зарплата\nnimi - Поиск зарплаты по имени\nkesk - Средняя зарплата\nh - Список людей, которые полчают >/< введеной зарплаты\n")
