@@ -1,8 +1,6 @@
 from random import *
-inimesed = ["A", "B",'A','D','E','F','G','H']
-palgad = [2000,150,2000,300,450,3000,2000,2000]
-#inimesed = ['A', 'B', 'C']
-#palgad = [3000, 2000, 1000]
+inimesed = ['A', 'B', 'C', 'D']
+palgad = [3000, 2000, 1000, 2000]
 def sisesta_andmed(i,p):
     N = int(input('Введите количество людей: '))
     for n in range(N):
