@@ -127,8 +127,50 @@ def erinev_palk(i, p):
                 nimi = inimesed[ind]
                 print(f'{nimi} - {i}')
 
+def top(i, p):
+    N = len(p)
+    v = int(input('Богатые/бедные - 1/2: '))
+    if v == 1:
+        for n in range (0, N):
+            for m in range (n, N):
+                if p[n] < p[m]:
+                    abi = p[n]
+                    p[n] = p[m]
+                    p[m] = abi
+                    abi = i[n]
+                    i[n] = i[m]
+                    i[m] = abi
+        k = 3
+        print('Топ 3 богатых')
+        for i in range(0, k, 1):
+            print(f'{inimesed[i]} - {palgad[i]}')
+    else:
+        for n in range (0, N):
+            for m in range (n, N):
+                if p[n] > p[m]:
+                    abi = p[n]
+                    p[n] = p[m]
+                    p[m] = abi
+                    abi = i[n]
+                    i[n] = i[m]
+                    i[m] = abi
+        k = 3
+        print('Топ 3 бедных')
+        for i in range(0, k, 1):
+            print(f'{inimesed[i]} - {palgad[i]}')
+
+def tulumaks(i, p):
+    z = int(input('Введите зарплату:'))
+    if z < 1200:
+        k = (z - 500)*0,2
+    elif z > 1200 <= 2100:
+        k = 500 - (500/850)*(z-1200)
+    else:
+        k = z * 0,2
+    print(f'Нетто зарплата - {k}')
+
 while 1:
-    valik=input("\na - Ввод данных\ne - Показать данные \nk - Удаление\ns - Сортировка\nv - Проверка одинаковых зарплат\nma - Максимальна зарплата\nmi - Минимальная зарплата\nnimi - Поиск зарплаты по имени\nkesk - Средняя зарплата\nh - Список людей, которые полчают >/< введеной зарплаты\n")
+    valik=input("\na - Ввод данных\ne - Показать данные \nk - Удаление\ns - Сортировка\nv - Проверка одинаковых зарплат\nma - Максимальна зарплата\nmi - Минимальная зарплата\nnimi - Поиск зарплаты по имени\nkesk - Средняя зарплата\nh - Список людей, которые полчают >/< введеной зарплаты\ntop - Топ 3 богатых и бедных\ntul - Зарплата с вычетом налогов\n")
     if valik.lower() == "a":
         inimesed,palgad=sisesta_andmed(inimesed,palgad)
     elif valik.lower() == "e":
@@ -149,5 +191,20 @@ while 1:
         kesk(palgad)
     elif valik.lower() == 'h':
         erinev_palk(inimesed, palgad)
+    elif valik.lower() == 'top':
+        top(inimesed, palgad)
+    elif valik.lower() == 'tul':
+        z = int(input('Введите зарплату: '))
+        k = 0
+        if z < 1200:
+            t = (z-500)*0.2
+            k = z - t
+        elif z > 1200 <= 2100:
+            t = 500-(500/850)*(z-1200)
+            k = z - t
+        else:
+            k = z*0.2
+        print(f'Нетто зарплата - {round(k,2)}')
+        #tulumaks(inimesed, palgad)
     else:
         break
