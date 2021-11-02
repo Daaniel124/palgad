@@ -160,14 +160,17 @@ def top(i, p):
             print(f'{inimesed[i]} - {palgad[i]}')
 
 def tulumaks(i, p):
-    z = int(input('Введите зарплату:'))
+    z = int(input('Введите зарплату: '))
+    k = 0
     if z < 1200:
-        k = (z - 500)*0,2
+        t = (z-500)*0.2
+        k = z - t
     elif z > 1200 <= 2100:
-        k = 500 - (500/850)*(z-1200)
+        t = 500-(500/850)*(z-1200)
+        k = z - t
     else:
-        k = z * 0,2
-    print(f'Нетто зарплата - {k}')
+        k = z*0.2
+    print(f'Нетто зарплата - {round(k,2)}')
 
 while 1:
     valik=input("\na - Ввод данных\ne - Показать данные \nk - Удаление\ns - Сортировка\nv - Проверка одинаковых зарплат\nma - Максимальна зарплата\nmi - Минимальная зарплата\nnimi - Поиск зарплаты по имени\nkesk - Средняя зарплата\nh - Список людей, которые полчают >/< введеной зарплаты\ntop - Топ 3 богатых и бедных\ntul - Зарплата с вычетом налогов\n")
@@ -194,17 +197,6 @@ while 1:
     elif valik.lower() == 'top':
         top(inimesed, palgad)
     elif valik.lower() == 'tul':
-        z = int(input('Введите зарплату: '))
-        k = 0
-        if z < 1200:
-            t = (z-500)*0.2
-            k = z - t
-        elif z > 1200 <= 2100:
-            t = 500-(500/850)*(z-1200)
-            k = z - t
-        else:
-            k = z*0.2
-        print(f'Нетто зарплата - {round(k,2)}')
-        #tulumaks(inimesed, palgad)
+        tulumaks(inimesed, palgad)
     else:
         break
